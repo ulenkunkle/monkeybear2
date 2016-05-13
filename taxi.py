@@ -136,7 +136,7 @@ class TaxiEnv(discrete.DiscreteEnv):
         out = self.desc.copy().tolist()
         out = [[c.decode('utf-8') for c in line] for line in out]
         taxirow, taxicol, passidx, destidx = self.decode(self.s)
-        screen = pg.display.set_mode((550, 500))
+        screen = pg.display.set_mode((550, 550))
         def ul(x): return "Q" if x == " " else x
         if passidx < 4:
             out[1+taxirow][2*taxicol+1]= utils.colorize(out[1+taxirow][2*taxicol+1], 'yellow', highlight=True)
@@ -169,7 +169,7 @@ class TaxiEnv(discrete.DiscreteEnv):
             msg1= self.dir[tmp]#msg2 = msg1
             msg2 = font.render(msg1,1,text_color)
             if self.lastaction is not None:
-                screen.blit(msg2,(45,350))
+                screen.blit(msg2,(45,450))
             pg.display.flip()
         else: outfile.write("\n")
 
