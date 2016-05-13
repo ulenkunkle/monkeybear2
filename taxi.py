@@ -136,21 +136,21 @@ class TaxiEnv(discrete.DiscreteEnv):
         out = self.desc.copy().tolist()
         out = [[c.decode('utf-8') for c in line] for line in out]
         taxirow, taxicol, passidx, destidx = self.decode(self.s)
-        screen = pg.display.set_mode((350, 500))
+        screen = pg.display.set_mode((550, 500))
         def ul(x): return "Q" if x == " " else x
         if passidx < 4:
-            out[1+taxirow][2*taxicol+1]# = utils.colorize(out[1+taxirow][2*taxicol+1], 'yellow', highlight=True)
+            out[1+taxirow][2*taxicol+1]= utils.colorize(out[1+taxirow][2*taxicol+1], 'yellow', highlight=True)
             print[1+taxirow]
             print taxirow
             
             
             pi, pj = self.locs[passidx]
-            out[1+pi][2*pj+1]# = utils.colorize(out[1+pi][2*pj+1], 'blue', bold=True)
+            out[1+pi][2*pj+1]= utils.colorize(out[1+pi][2*pj+1], 'blue', bold=True)
             
             screen.blit(self.player2, (2*(29+pi),18*(pj+1)))
             #pg.display.flip()
         else: # passenger in taxi
-            out[1+taxirow][2*taxicol+1]# = utils.colorize(ul(out[1+taxirow][2*taxicol+1]), 'green', highlight=True)
+            out[1+taxirow][2*taxicol+1]= utils.colorize(ul(out[1+taxirow][2*taxicol+1]), 'green', highlight=True)
         
         di, dj = self.locs[destidx]
         #screen.blit(msg2,(300,200))
