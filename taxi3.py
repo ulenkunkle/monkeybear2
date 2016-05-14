@@ -193,10 +193,11 @@ class TaxiEnv(discrete.DiscreteEnv):
             #self.msg1 = outfile.write
             msg1= self.dir[tmp]#msg2 = msg1
             msg2 = font.render(msg1,1,text_color)
-            msg3 = font.render("reward: "+str(self.noreward),1,text_color)
+            msg3 = tmp+self.noreward+5
+            msg4 = font.render("rewards: "+str(msg3),1,text_color)
             if self.lastaction is not None:
                 screen.blit(msg2,(45,470))
-                screen.blit(msg3,(245,460+tmp))
+                screen.blit(msg4,(245,460+tmp))
             
             pg.display.flip()
         else: outfile.write("\n")
